@@ -21,6 +21,7 @@ class PersonsViewModel : ViewModel() {
     )
 
     private var _persons = MutableLiveData<List<Person>>(_personsList)
+    val selected = MutableLiveData<Person>()
     var persons: LiveData<List<Person>> = _persons
 
     fun add(person: Person) {
@@ -41,7 +42,6 @@ class PersonsViewModel : ViewModel() {
         person.birthMonth = info.birthMonth
         person.birthDayOfMonth = info.birthDayOfMonth
         person.age = info.age
-        _persons.value = _personsList
     }
 
     operator fun get(position: Int): Person {

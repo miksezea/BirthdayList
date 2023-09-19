@@ -29,8 +29,13 @@ class FriendsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.persons.observe(viewLifecycleOwner) {
+        viewModel.persons.observe(viewLifecycleOwner) { persons ->
             binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+            val adapter = PersonsAdapter(persons) { position ->
+                viewModel.selected.value = viewModel[position]
+                findNavController().navigate(R.id.action_FriendsFragment_to_FriendDetailedFragment)
+            }
+            binding.recyclerView.adapter = adapter
         }
 
     }

@@ -24,5 +24,15 @@
         <action
             android:id="@+id/action_FriendsFragment_to_LoginFragment"
             app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_FriendsFragment_to_FriendDetailedFragment"
+            app:destination="@+id/FriendDetailedFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/FriendDetailedFragment"
+        android:name="com.example.birthdaylist.FriendDetailed"
+        android:label="Detailed view"
+        tools:layout="@layout/fragment_friend_detailed">
+
     </fragment>
 </navigation>
