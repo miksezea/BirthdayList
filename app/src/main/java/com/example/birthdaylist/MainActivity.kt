@@ -27,15 +27,11 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
+        // TODO: Logout should not be available on login page
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
@@ -44,8 +40,9 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        // TODO: Add functionality for logout button
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_logout -> true
             else -> super.onOptionsItemSelected(item)
         }
     }
