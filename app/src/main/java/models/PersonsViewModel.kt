@@ -1,4 +1,4 @@
-package com.example.birthdaylist
+package models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -35,7 +35,7 @@ class PersonsViewModel : ViewModel() {
     }
 
     fun update(id: Int, info: Person) {
-        val person: Person = _personsList.first {p -> p.id == id}
+        val person: Person = _personsList.first { p -> p.id == id}
         person.userId = info.userId
         person.name = info.name
         person.birthYear = info.birthYear

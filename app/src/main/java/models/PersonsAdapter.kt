@@ -1,10 +1,11 @@
-package com.example.birthdaylist
+package models
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.birthdaylist.R
 
 // Adapter class borrowed from: https://github.com/andersbor/kotlinViewModelMasterDetail3/tree/master
 class PersonsAdapter(

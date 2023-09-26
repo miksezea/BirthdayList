@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.birthdaylist.databinding.FragmentFriendsBinding
+import models.PersonsAdapter
+import models.PersonsViewModel
 
 // TODO: List, detailed view, add, delete, update, sort, filter
 class FriendsFragment : Fragment() {

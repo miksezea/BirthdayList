@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/FriendDetailedFragment"
-        android:name="com.example.birthdaylist.FriendDetailed"
+        android:name="com.example.birthdaylist.FriendDetailedFragment"
         android:label="Detailed view"
         tools:layout="@layout/fragment_friend_detailed">
 
