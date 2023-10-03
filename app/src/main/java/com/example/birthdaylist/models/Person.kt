@@ -1,6 +1,7 @@
 package com.example.birthdaylist.models
 
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class Person(
     @Json(name = "id") val id: Int = 0,
@@ -12,4 +13,8 @@ data class Person(
     @Json(name = "pictureUrl") val pictureUrl: String? = null,
     @Json(name = "remarks") val remarks: String? = null,
     @Json(name = "age") val age: Int = 0
-)
+) {
+    override fun toString(): String {
+        return "Person($id $name, Birth date: $birthDayOfMonth/$birthMonth $birthYear Age: $age)"
+    }
+}

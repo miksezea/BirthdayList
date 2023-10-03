@@ -6,7 +6,7 @@ import retrofit2.http.*
 
 interface PersonListService {
     @GET("persons")
-    fun getPersons(): Call<List<Person>>
+    fun getAllPersons(): Call<List<Person>>
 
     @GET("persons/{id}")
     fun getPerson(@Path("id") id: Int): Call<Person>
