@@ -1,4 +1,4 @@
-package models
+package com.example.birthdaylist.models
 
 import android.view.LayoutInflater
 import android.view.View

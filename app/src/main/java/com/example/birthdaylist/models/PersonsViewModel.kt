@@ -1,4 +1,4 @@
-package models
+package com.example.birthdaylist.models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
