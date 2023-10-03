@@ -26,13 +26,22 @@
             app:destination="@id/LoginFragment" />
         <action
             android:id="@+id/action_FriendsFragment_to_FriendDetailedFragment"
-            app:destination="@+id/FriendDetailedFragment"/>
+            app:destination="@+id/FriendDetailedFragment" />
     </fragment>
     <fragment
         android:id="@+id/FriendDetailedFragment"
         android:name="com.example.birthdaylist.FriendDetailedFragment"
-        android:label="Detailed view"
+        android:label="@string/detailed_view"
         tools:layout="@layout/fragment_friend_detailed">
 
+        <action
+            android:id="@+id/action_FriendDetailedFragment_to_FriendsFragment"
+            app:destination="@+id/FriendsFragment" />
+        <action
+            android:id="@+id/action_FriendDetailedFragment_to_LoginFragment"
+            app:destination="@+id/LoginFragment" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
     </fragment>
 </navigation>

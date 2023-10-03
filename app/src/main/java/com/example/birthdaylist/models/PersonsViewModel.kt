@@ -15,7 +15,7 @@ class PersonsViewModel : ViewModel() {
         reload()
     }
 
-    private fun reload() {
+    fun reload() {
         repository.getPersons()
     }
 

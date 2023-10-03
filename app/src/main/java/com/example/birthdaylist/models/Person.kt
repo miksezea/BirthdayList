@@ -1,20 +1,18 @@
 package com.example.birthdaylist.models
 
-import com.squareup.moshi.Json
-import java.io.Serializable
+import com.google.gson.annotations.SerializedName
 
 data class Person(
-    @Json(name = "id") val id: Int = 0,
-    @Json(name = "userId") val userId: String = "",
-    @Json(name = "name") val name: String = "",
-    @Json(name = "birthYear") val birthYear: Int = 0,
-    @Json(name = "birthMonth") val birthMonth: Int = 0,
-    @Json(name = "birthDayOfMonth") val birthDayOfMonth: Int = 0,
-    @Json(name = "pictureUrl") val pictureUrl: String? = null,
-    @Json(name = "remarks") val remarks: String? = null,
-    @Json(name = "age") val age: Int = 0
-) {
+    @SerializedName("id") val id: Int = 0,
+    @SerializedName("userId") val userId: String = "",
+    @SerializedName("name") val name: String = "",
+    @SerializedName("birthYear") val birthYear: Int = 0,
+    @SerializedName("birthMonth") val birthMonth: Int = 0,
+    @SerializedName("birthDayOfMonth") val birthDayOfMonth: Int = 0,
+    @SerializedName("pictureUrl") val pictureUrl: String? = null,
+    @SerializedName("remarks") val remarks: String? = null,
+    @SerializedName("age") val age: Int = 0) {
     override fun toString(): String {
-        return "Person($id $name, Birth date: $birthDayOfMonth/$birthMonth $birthYear Age: $age)"
+        return "Person($id $name, Birth date: $birthDayOfMonth/$birthMonth - $birthYear Age: $age)"
     }
 }

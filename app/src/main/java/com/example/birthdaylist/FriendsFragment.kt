@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.birthdaylist.databinding.FragmentFriendsBinding
 import com.example.birthdaylist.models.PersonsAdapter
 import com.example.birthdaylist.models.PersonsViewModel
+import android.content.res.Configuration
+import androidx.recyclerview.widget.GridLayoutManager
 
 // TODO: List, detailed view, add, delete, update, sort, filter
 class FriendsFragment : Fragment() {
-
     private var _binding: FragmentFriendsBinding? = null
-
-    private val viewModel: PersonsViewModel by activityViewModels()
     private val binding get() = _binding!!
+
+    private val personViewModel: PersonsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,15 +31,39 @@ class FriendsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.persons.observe(viewLifecycleOwner) { persons ->
-            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-            val adapter = PersonsAdapter(persons) { position ->
-                viewModel.selected.value = viewModel[position]
-                findNavController().navigate(R.id.action_FriendsFragment_to_FriendDetailedFragment)
+        personViewModel.personsLiveData.observe(viewLifecycleOwner) { persons ->
+            binding.progressbar.visibility = View.GONE
+            binding.recyclerView.visibility = if (persons == null) View.GONE else View.VISIBLE
+            if (persons != null) {
+                val adapter = PersonsAdapter(persons) { position ->
+                    val action =
+                        FriendsFragmentDirections.
+                        actionFriendsFragmentToFriendDetailedFragment(position)
+                    findNavController().navigate(action)
+                }
+                var columns = 2
+                val currentOrientation = resources.configuration.orientation
+                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    columns = 4
+                } else if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+                    columns = 2
+                }
+                binding.recyclerView.layoutManager = GridLayoutManager(this.context, columns)
+
+                binding.recyclerView.adapter = adapter
             }
-            binding.recyclerView.adapter = adapter
         }
 
+        personViewModel.errorMessageLiveData.observe(viewLifecycleOwner) { errorMessage ->
+            binding.textviewMessage.text = errorMessage
+        }
+
+        personViewModel.reload()
+
+        binding.swiperefresh.setOnRefreshListener {
+            personViewModel.reload()
+            binding.swiperefresh.isRefreshing = false // TODO too early
+        }
     }
 
     override fun onDestroyView() {

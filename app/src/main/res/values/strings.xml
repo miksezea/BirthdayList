@@ -15,4 +15,5 @@
     <string name="delete">Delete</string>
     <string name="card">Card</string>
     <string name="friend">Friend</string>
+    <string name="detailed_view">Detailed view</string>
 </resources>
