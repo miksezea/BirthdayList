@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_margin="10dp"
+    android:checkable="true"
+    android:clickable="true"
+    app:cardBackgroundColor="@color/medium_purple"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    app:cardMaxElevation="10dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/list_item_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/list_item_birthday"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textStyle="italic"/>
-    <TextView
-        android:id="@+id/list_item_age"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textStyle="italic"/>
-    <Button
-        android:id="@+id/button_delete_friend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/delete"/>
+        android:orientation="vertical"
+        android:padding="5dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/textview_list_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/friend"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
