@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="username"
-        android:hint="@string/username"
+        android:hint="@string/placeholder_username"
         android:inputType="text"
         android:layout_marginBottom="16dp"
         android:padding="12dp"/>
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="password"
-        android:hint="@string/password"
+        android:hint="@string/placeholder_password"
         android:inputType="textPassword"
         android:layout_marginBottom="32dp"
         android:padding="12dp"/>
@@ -38,18 +38,18 @@
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login" />
+        android:text="@string/button_login" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/don_t_have_an_account"/>
+        android:text="@string/text_no_account"/>
 
     <TextView
         android:id="@+id/textview_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register_here"
+        android:text="@string/button_register"
         android:textColor="@color/brutal_blue"
         android:textStyle="bold"/>
 </LinearLayout>

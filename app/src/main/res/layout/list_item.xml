@@ -21,9 +21,10 @@
         android:padding="5dp">
 
         <TextView
+            android:id="@+id/textview_cardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/card"
+            android:text="@string/text_card"
             android:textStyle="bold" />
 
         <Space
@@ -34,7 +35,7 @@
             android:id="@+id/textview_list_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/friend"
+            android:text="@string/text_friend"
             android:textStyle="italic" />
     </LinearLayout>
 
