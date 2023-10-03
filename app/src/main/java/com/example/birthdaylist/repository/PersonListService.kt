@@ -5,18 +5,18 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface PersonListService {
-    @GET("persons")
+    @GET("Persons")
     fun getAllPersons(): Call<List<Person>>
 
-    @GET("persons/{id}")
+    @GET("Persons/{id}")
     fun getPerson(@Path("id") id: Int): Call<Person>
 
-    @POST("persons")
+    @POST("Persons")
     fun addPerson(@Body person: Person): Call<Person>
 
-    @PUT("persons/{id}")
+    @PUT("Persons/{id}")
     fun updatePerson(@Path("id") id: Int, @Body person: Person): Call<Person>
 
-    @DELETE("persons/{id}")
+    @DELETE("Persons/{id}")
     fun deletePerson(@Path("id") id: Int): Call<Person>
 }

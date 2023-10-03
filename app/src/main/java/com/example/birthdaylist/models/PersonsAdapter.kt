@@ -28,12 +28,14 @@ class PersonsAdapter(
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = items[position].toString()
+        viewHolder.textViewTitle.text = items[position].name
+        viewHolder.textViewInfo.text = items[position].toString()
     }
 
     class MyViewHolder(itemView: View, private val onItemClicked: (position: Int) -> Unit) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val textView: TextView = itemView.findViewById(R.id.textview_list_item)
+        val textViewTitle: TextView = itemView.findViewById(R.id.textview_cardTitle)
+        val textViewInfo: TextView = itemView.findViewById(R.id.textview_list_item)
 
         init {
             itemView.setOnClickListener(this)
