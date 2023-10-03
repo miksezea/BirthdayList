@@ -13,7 +13,7 @@ import com.example.birthdaylist.models.PersonsViewModel
 import android.content.res.Configuration
 import androidx.recyclerview.widget.GridLayoutManager
 
-// TODO: List, detailed view, add, delete, update, sort, filter
+// TODO:  Sort and filter
 class FriendsFragment : Fragment() {
     private var _binding: FragmentFriendsBinding? = null
     private val binding get() = _binding!!

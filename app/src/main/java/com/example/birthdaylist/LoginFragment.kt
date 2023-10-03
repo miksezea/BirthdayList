@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.birthdaylist.databinding.FragmentLoginBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 // TODO: Add login functionality
 class LoginFragment : Fragment() {
 
@@ -35,6 +32,9 @@ class LoginFragment : Fragment() {
 
         binding.buttonLogin.setOnClickListener {
             findNavController().navigate(R.id.action_LoginFragment_to_FriendsFragment)
+
+            binding.edittextUsername.text.clear()
+            binding.edittextPassword.text.clear()
         }
     }
 

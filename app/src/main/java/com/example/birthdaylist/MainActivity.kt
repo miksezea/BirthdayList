@@ -35,12 +35,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    // TODO: Add logout and my account functionality
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        // TODO: Add functionality for logout button
         return when (item.itemId) {
             R.id.action_logout -> true
             else -> super.onOptionsItemSelected(item)
