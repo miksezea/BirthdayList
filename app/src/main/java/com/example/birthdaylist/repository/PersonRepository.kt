@@ -10,7 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PersonRepository {
-    private val _baseUrl = "https://birthdaysrest.azurewebsites.net/api/persons/"
+    private val _baseUrl = "https://birthdaysrest.azurewebsites.net/api/"
 
     private val personListService: PersonListService
     val personLiveData: MutableLiveData<List<Person>> = MutableLiveData<List<Person>>()
