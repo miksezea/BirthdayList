@@ -14,6 +14,32 @@
         <action
             android:id="@+id/action_LoginFragment_to_FriendsFragment"
             app:destination="@id/FriendsFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_RegisterFragment"
+            app:destination="@id/RegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/RegisterFragment"
+        android:name="com.example.birthdaylist.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+
+        <action
+            android:id="@+id/action_RegisterFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MyAccountFragment"
+        android:name="com.example.birthdaylist.MyAccountFragment"
+        android:label="My account"
+        tools:layout="@layout/fragment_my_account">
+
+        <action
+            android:id="@+id/action_MyAccountFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_MyAccountFragment_to_FriendsFragment"
+            app:destination="@id/FriendsFragment" />
     </fragment>
     <fragment
         android:id="@+id/FriendsFragment"
@@ -25,8 +51,14 @@
             android:id="@+id/action_FriendsFragment_to_LoginFragment"
             app:destination="@id/LoginFragment" />
         <action
+            android:id="@+id/action_FriendsFragment_to_MyAccountFragment"
+            app:destination="@id/MyAccountFragment" />
+        <action
             android:id="@+id/action_FriendsFragment_to_FriendDetailedFragment"
             app:destination="@+id/FriendDetailedFragment" />
+        <action
+            android:id="@+id/action_FriendsFragment_to_AddFriendFragment"
+            app:destination="@+id/AddFriendFragment" />
     </fragment>
     <fragment
         android:id="@+id/FriendDetailedFragment"
@@ -35,13 +67,48 @@
         tools:layout="@layout/fragment_friend_detailed">
 
         <action
+            android:id="@+id/action_FriendDetailedFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_FriendDetailedFragment_to_MyAccountFragment"
+            app:destination="@id/MyAccountFragment" />
+        <action
             android:id="@+id/action_FriendDetailedFragment_to_FriendsFragment"
             app:destination="@+id/FriendsFragment" />
-        <action
-            android:id="@+id/action_FriendDetailedFragment_to_LoginFragment"
-            app:destination="@+id/LoginFragment" />
         <argument
             android:name="position"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddFriendFragment"
+        android:name="com.example.birthdaylist.AddFriendFragment"
+        android:label="Add Friend"
+        tools:layout="@layout/fragment_add_friend">
+
+        <action
+            android:id="@+id/action_AddFriendFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_AddFriendFragment_to_MyAccountFragment"
+            app:destination="@id/MyAccountFragment" />
+        <action
+            android:id="@+id/action_AddFriendFragment_to_FriendsFragment"
+            app:destination="@id/FriendsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/UpdateFriendFragment"
+        android:name="com.example.birthdaylist.UpdateFriendFragment"
+        android:label="Update Friend"
+        tools:layout="@layout/fragment_update_friend">
+
+        <action
+            android:id="@+id/action_UpdateFriendFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_UpdateFriendFragment_to_MyAccountFragment"
+            app:destination="@id/MyAccountFragment" />
+        <action
+            android:id="@+id/action_UpdateFriendFragment_to_FriendDetailedFragment"
+            app:destination="@id/FriendDetailedFragment" />
     </fragment>
 </navigation>

@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".AddFriendFragment"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center">
+
+    <!-- TODO: Finish design -->
 
     <EditText
         android:id="@+id/edittext_add_name"
