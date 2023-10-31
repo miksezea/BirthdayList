@@ -1,14 +1,19 @@
 package com.example.birthdaylist
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.birthdaylist.databinding.FragmentFriendDetailedBinding
 import com.example.birthdaylist.models.PersonsViewModel
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 
 // TODO: Implement picture
 class FriendDetailedFragment : Fragment() {
@@ -16,6 +21,7 @@ class FriendDetailedFragment : Fragment() {
     private val binding get() = _binding!!
     private val personViewModel: PersonsViewModel by activityViewModels()
 
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -90,5 +96,22 @@ class FriendDetailedFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_main, menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("APPLE", item.toString())
+        when (item.itemId) {
+            R.id.action_logout -> {
+                auth.signOut()
+                findNavController().navigate(R.id.action_FriendDetailedFragment_to_LoginFragment)
+            }
+            R.id.action_account -> {
+                findNavController().navigate(R.id.action_FriendDetailedFragment_to_MyAccountFragment)
+            }
+        }
+        return true
     }
 }

@@ -11,8 +11,13 @@ import com.example.birthdaylist.databinding.FragmentFriendsBinding
 import com.example.birthdaylist.models.PersonsAdapter
 import com.example.birthdaylist.models.PersonsViewModel
 import android.content.res.Configuration
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 // TODO:  Sort and filter
 class FriendsFragment : Fragment() {
@@ -21,6 +26,7 @@ class FriendsFragment : Fragment() {
 
     private val personViewModel: PersonsViewModel by activityViewModels()
 
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,5 +82,22 @@ class FriendsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_main, menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("APPLE", item.toString())
+        when (item.itemId) {
+            R.id.action_logout -> {
+                auth.signOut()
+                findNavController().navigate(R.id.action_FriendsFragment_to_LoginFragment)
+            }
+            R.id.action_account -> {
+                findNavController().navigate(R.id.action_FriendsFragment_to_MyAccountFragment)
+            }
+        }
+        return true
     }
 }

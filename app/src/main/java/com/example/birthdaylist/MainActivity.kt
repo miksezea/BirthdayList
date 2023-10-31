@@ -6,8 +6,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.example.birthdaylist.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,14 +26,12 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        // TODO: Logout should not be available on login page
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
-    // TODO: Add logout and my account functionality
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -45,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             R.id.action_logout -> true
             else -> super.onOptionsItemSelected(item)
         }
-    }
+    }*/
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
