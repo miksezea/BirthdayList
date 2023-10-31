@@ -12,6 +12,7 @@ import com.example.birthdaylist.models.PersonsAdapter
 import com.example.birthdaylist.models.PersonsViewModel
 import android.content.res.Configuration
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.snackbar.Snackbar
 
 // TODO:  Sort and filter
 class FriendsFragment : Fragment() {
@@ -30,6 +31,7 @@ class FriendsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         personViewModel.personsLiveData.observe(viewLifecycleOwner) { persons ->
             binding.progressbar.visibility = View.GONE
             binding.recyclerView.visibility = if (persons == null) View.GONE else View.VISIBLE
@@ -62,6 +64,13 @@ class FriendsFragment : Fragment() {
         binding.swiperefresh.setOnRefreshListener {
             personViewModel.reload()
             binding.swiperefresh.isRefreshing = false // TODO too early
+        }
+
+        binding.fabAddFriend.setOnClickListener { view ->
+            Snackbar.make(view, "Add friend", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+            val action = FriendsFragmentDirections.actionFriendsFragmentToAddFriendFragment()
+            findNavController().navigate(action)
         }
     }
     override fun onDestroyView() {

@@ -1,7 +1,7 @@
 package com.example.birthdaylist.models
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+// import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.birthdaylist.repository.PersonRepository
 
@@ -9,7 +9,7 @@ class PersonsViewModel : ViewModel() {
     private val repository = PersonRepository()
     val personsLiveData: LiveData<List<Person>> = repository.personLiveData
     val errorMessageLiveData: LiveData<String> = repository.errorMessageLiveData
-    val updateMessageLiveData: LiveData<String> = repository.updateMessageLiveData
+    // val updateMessageLiveData: LiveData<String> = repository.updateMessageLiveData
 
     init {
         reload()

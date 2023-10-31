@@ -49,7 +49,9 @@ class FriendDetailedFragment : Fragment() {
                 binding.linearLayoutFriendDetailedView.visibility = View.GONE
                 binding.editTextFriendDetailedEmail.setText(person.userId)
                 binding.editTextFriendDetailedName.setText(person.name)
-                // TODO: birthdate
+                binding.edittextAddDay.setText(person.birthDayOfMonth.toString())
+                binding.edittextAddMonth.setText(person.birthMonth.toString())
+                binding.edittextAddYear.setText(person.birthYear.toString())
                 binding.editTextFriendDetailedRemarks.setText(person.remarks)
                 binding.linearLayoutFriendDetailedUpdate.visibility = View.VISIBLE
 
@@ -62,13 +64,17 @@ class FriendDetailedFragment : Fragment() {
                     val newPerson = person.copy(
                         userId = binding.editTextFriendDetailedEmail.text.toString(),
                         name = binding.editTextFriendDetailedName.text.toString(),
-                        // TODO: birthdate
+                        birthDayOfMonth = binding.edittextAddDay.text.toString().toInt(),
+                        birthMonth = binding.edittextAddMonth.text.toString().toInt(),
+                        birthYear = binding.edittextAddYear.text.toString().toInt(),
                         remarks = binding.editTextFriendDetailedRemarks.text.toString()
                     )
                     personViewModel.update(newPerson)
+
                     binding.textViewFriendDetailedEmail.text = newPerson.userId
                     binding.textViewFriendDetailedName.text = newPerson.name
-                    // TODO: birthdate
+                    binding.textViewFriendDetailedBirthdate.text = newPerson.getBirthdayString()
+                    binding.textViewFriendDetailedAge.text = newPerson.age.toString()
                     binding.textViewFriendDetailedRemarks.text = newPerson.remarks
 
                     binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE

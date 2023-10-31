@@ -35,6 +35,7 @@ class AddFriendFragment : Fragment() {
             val month = binding.edittextAddMonth.text.toString()
             val year = binding.edittextAddYear.text.toString()
             val remarks = binding.edittextAddRemarks.text.toString()
+
             val dayInt = day.toInt()
             val monthInt = month.toInt()
             val yearInt = year.toInt()
