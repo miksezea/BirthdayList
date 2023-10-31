@@ -45,15 +45,16 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
 
     // Material Design
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
 
     // Firebase
-    implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
+    implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
+    implementation("com.google.firebase:firebase-auth:22.2.0")
 
     // Test
     testImplementation("junit:junit:4.13.2")
@@ -69,7 +70,7 @@ dependencies {
     implementation("androidx.annotation:annotation:1.7.0")
 
     // RecyclerView
-    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // GitHub Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")

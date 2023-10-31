@@ -5,53 +5,123 @@
     android:layout_height="match_parent"
     tools:context=".FriendDetailedFragment"
     android:orientation="vertical"
-    android:gravity="center">
+    android:layout_gravity="center">
 
-    <!-- TODO: Finish design -->
+    <!-- TODO: Make more beautiful -->
 
     <TextView
+        android:id="@+id/textView_friend_detailed_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Picture"
-        android:padding="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Id"
-        android:padding="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:padding="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:padding="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Birthdate"
-        android:padding="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age"
-        android:padding="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remarks"
-        android:padding="12dp"/>
-    <Button
-        android:id="@+id/button_delete_friend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete" />
-    <Button
-        android:id="@+id/button_update_friend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update" />
+        android:text="Error"
+        android:padding="12dp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_friend_detailed_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/textView_friend_detailed_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id"
+            android:padding="12dp" />
+        <TextView
+            android:id="@+id/textView_friend_detailed_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:padding="12dp" />
+        <TextView
+            android:id="@+id/textView_friend_detailed_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:padding="12dp" />
+        <TextView
+            android:id="@+id/textView_friend_detailed_birthdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birthdate"
+            android:padding="12dp" />
+        <TextView
+            android:id="@+id/textView_friend_detailed_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:padding="12dp" />
+        <TextView
+            android:id="@+id/textView_friend_detailed_remarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remarks"
+            android:padding="12dp" />
+        <Button
+            android:id="@+id/button_delete_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete" />
+        <Button
+            android:id="@+id/button_update_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_friend_detailed_update"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/editText_friend_detailed_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:importantForAutofill="no"
+            android:padding="12dp" />
+        <EditText
+            android:id="@+id/editText_friend_detailed_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:importantForAutofill="no"
+            android:padding="12dp" />
+        <EditText
+            android:id="@+id/editText_friend_detailed_birthdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birthdate"
+            android:inputType="date"
+            android:importantForAutofill="no"
+            android:padding="12dp" />
+        <EditText
+            android:id="@+id/editText_friend_detailed_remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Remarks"
+            android:inputType="textMultiLine"
+            android:importantForAutofill="no"
+            android:padding="12dp" />
+        <Button
+            android:id="@+id/button_confirm_update_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm" />
+        <Button
+            android:id="@+id/button_cancel_update_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+    </LinearLayout>
 </LinearLayout>

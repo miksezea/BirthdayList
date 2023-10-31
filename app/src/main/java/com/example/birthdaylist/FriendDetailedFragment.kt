@@ -5,55 +5,84 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import com.example.birthdaylist.databinding.FragmentFriendDetailedBinding
+import com.example.birthdaylist.models.PersonsViewModel
+import androidx.navigation.fragment.findNavController
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FriendDetailedFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+// TODO: Implement picture
 class FriendDetailedFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentFriendDetailedBinding? = null
+    private val binding get() = _binding!!
+    private val personViewModel: PersonsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend_detailed, container, false)
+    ): View {
+        _binding = FragmentFriendDetailedBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FriendDetailedFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FriendDetailedFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val bundle = requireArguments()
+        val friendDetailedFragmentArgs: FriendDetailedFragmentArgs = FriendDetailedFragmentArgs.fromBundle(bundle)
+        val position = friendDetailedFragmentArgs.position
+        val person = personViewModel[position]
+        if (person == null) {
+            binding.linearLayoutFriendDetailedView.visibility = View.GONE
+            binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE
+            binding.textViewFriendDetailedError.visibility = View.VISIBLE
+            binding.textViewFriendDetailedError.text = "Error: Person with id: " + position.toString() + "not found"
+            return
+        } else {
+            binding.textViewFriendDetailedId.text = person.id.toString()
+            binding.textViewFriendDetailedEmail.text = person.userId
+            binding.textViewFriendDetailedName.text = person.name
+            binding.textViewFriendDetailedBirthdate.text = person.getBirthdayString()
+            binding.textViewFriendDetailedAge.text = person.age.toString()
+            binding.textViewFriendDetailedRemarks.text = person.remarks
+
+            binding.buttonUpdateFriend.setOnClickListener {
+                binding.linearLayoutFriendDetailedView.visibility = View.GONE
+                binding.editTextFriendDetailedEmail.setText(person.userId)
+                binding.editTextFriendDetailedName.setText(person.name)
+                // TODO: birthdate
+                binding.editTextFriendDetailedRemarks.setText(person.remarks)
+                binding.linearLayoutFriendDetailedUpdate.visibility = View.VISIBLE
+
+                binding.buttonCancelUpdateFriend.setOnClickListener {
+                    binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE
+                    binding.linearLayoutFriendDetailedView.visibility = View.VISIBLE
+                }
+
+                binding.buttonConfirmUpdateFriend.setOnClickListener {
+                    val newPerson = person.copy(
+                        userId = binding.editTextFriendDetailedEmail.text.toString(),
+                        name = binding.editTextFriendDetailedName.text.toString(),
+                        // TODO: birthdate
+                        remarks = binding.editTextFriendDetailedRemarks.text.toString()
+                    )
+                    personViewModel.update(newPerson)
+                    binding.textViewFriendDetailedEmail.text = newPerson.userId
+                    binding.textViewFriendDetailedName.text = newPerson.name
+                    // TODO: birthdate
+                    binding.textViewFriendDetailedRemarks.text = newPerson.remarks
+
+                    binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE
+                    binding.linearLayoutFriendDetailedView.visibility = View.VISIBLE
                 }
             }
+            binding.buttonDeleteFriend.setOnClickListener {
+                personViewModel.delete(person.id)
+                findNavController().popBackStack()
+            }
+        }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

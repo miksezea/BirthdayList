@@ -95,20 +95,4 @@
             android:id="@+id/action_AddFriendFragment_to_FriendsFragment"
             app:destination="@id/FriendsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/UpdateFriendFragment"
-        android:name="com.example.birthdaylist.UpdateFriendFragment"
-        android:label="Update Friend"
-        tools:layout="@layout/fragment_update_friend">
-
-        <action
-            android:id="@+id/action_UpdateFriendFragment_to_LoginFragment"
-            app:destination="@id/LoginFragment" />
-        <action
-            android:id="@+id/action_UpdateFriendFragment_to_MyAccountFragment"
-            app:destination="@id/MyAccountFragment" />
-        <action
-            android:id="@+id/action_UpdateFriendFragment_to_FriendDetailedFragment"
-            app:destination="@id/FriendDetailedFragment" />
-    </fragment>
 </navigation>

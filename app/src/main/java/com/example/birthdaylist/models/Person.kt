@@ -15,4 +15,7 @@ data class Person(
     override fun toString(): String {
         return "Born: $birthDayOfMonth/$birthMonth - $birthYear\nAge: $age"
     }
+    fun getBirthdayString(): String {
+        return "$birthDayOfMonth/$birthMonth - $birthYear"
+    }
 }
