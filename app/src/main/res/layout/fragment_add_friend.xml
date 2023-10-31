@@ -7,7 +7,19 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <!-- TODO: Finish design -->
+    <!--TODO: Finish design -->
+    <TextView
+        android:id="@+id/textView_add_friend_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"/>
 
     <EditText
         android:id="@+id/edittext_add_name"
@@ -19,6 +31,11 @@
         android:layout_marginBottom="16dp"
         android:padding="12dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"/>
+
     <EditText
         android:id="@+id/edittext_add_email"
         android:layout_width="match_parent"
@@ -29,15 +46,56 @@
         android:layout_marginBottom="16dp"
         android:padding="12dp" />
 
-    <EditText
-        android:id="@+id/edittext_add_birthday"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Birth date:"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_birthday"
-        android:inputType="date"
-        android:layout_marginBottom="16dp"
-        android:padding="12dp"
-        android:importantForAutofill="no" />
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <EditText
+            android:id="@+id/edittext_add_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Day"
+            android:inputType="date"
+            android:padding="12dp"
+            android:importantForAutofill="no" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"/>
+        <EditText
+            android:id="@+id/edittext_add_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Month"
+            android:inputType="date"
+            android:padding="12dp"
+            android:importantForAutofill="no" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "/>
+        <EditText
+            android:id="@+id/edittext_add_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Year"
+            android:inputType="date"
+            android:padding="12dp"
+            android:importantForAutofill="no" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remarks:"/>
 
     <EditText
         android:id="@+id/edittext_add_remarks"
@@ -49,6 +107,12 @@
         android:layout_marginBottom="16dp"
         android:padding="12dp" />
 
-    <!-- TODO: Option to add picture  -->
+    <Button
+        android:id="@+id/button_add_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add as friend"/>
+
+    <!--TODO: Option to add picture  -->
 
 </LinearLayout>

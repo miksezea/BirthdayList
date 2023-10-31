@@ -30,7 +30,6 @@ class FriendsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         personViewModel.personsLiveData.observe(viewLifecycleOwner) { persons ->
             binding.progressbar.visibility = View.GONE
             binding.recyclerView.visibility = if (persons == null) View.GONE else View.VISIBLE
@@ -65,7 +64,6 @@ class FriendsFragment : Fragment() {
             binding.swiperefresh.isRefreshing = false // TODO too early
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

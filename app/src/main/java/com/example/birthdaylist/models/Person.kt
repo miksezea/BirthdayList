@@ -12,6 +12,9 @@ data class Person(
     @SerializedName("pictureUrl") val pictureUrl: String? = null,
     @SerializedName("remarks") val remarks: String? = null,
     @SerializedName("age") val age: Int) {
+
+    constructor(userId: String, name: String, birthYear: Int, birthMonth: Int, birthDayOfMonth: Int, remarks: String? = null) :
+            this(0, userId, name, birthYear, birthMonth, birthDayOfMonth, null, remarks,0)
     override fun toString(): String {
         return "Born: $birthDayOfMonth/$birthMonth - $birthYear\nAge: $age"
     }
