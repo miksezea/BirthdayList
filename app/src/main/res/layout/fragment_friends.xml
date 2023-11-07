@@ -3,25 +3,149 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".FriendsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".FriendsFragment">
-
-        <!-- TODO: Sort/Filter content -->
-
-        <TextView
-            android:id="@+id/textview_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:orientation="vertical">
 
         <ProgressBar
             android:id="@+id/progressbar"
             style="android:indeterminate"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- TODO: Add hello message -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by name:"
+                android:textSize="11sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+            <Button
+                android:id="@+id/button_sort_by_name_asc"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="Ascending"
+                android:textSize="11sp"
+                android:layout_marginEnd="5dp"/>
+            <Button
+                android:id="@+id/button_sort_by_name_desc"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="Descending"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by age:"
+                android:textSize="11sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <Button
+                android:id="@+id/button_sort_by_age_asc"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="Ascending"
+                android:textSize="11sp"
+                android:layout_marginEnd="5dp"/>
+            <Button
+                android:id="@+id/button_sort_by_age_desc"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="Descending"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort by birthday:"
+                android:textSize="11sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+
+            <Button
+                android:id="@+id/button_sort_by_birthday_asc"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="Ascending"
+                android:textSize="11sp"
+                android:layout_marginEnd="5dp" />
+            <Button
+                android:id="@+id/button_sort_by_birthday_desc"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="Descending"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter by:"
+                android:textSize="11sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+            <EditText
+                android:id="@+id/edittext_filter_name"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:layout_marginStart="5dp"
+                android:hint="name"
+                android:importantForAutofill="no"/>
+            <EditText
+                android:id="@+id/edittext_filter_age"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_marginStart="5dp"
+                android:hint="age"
+                android:importantForAutofill="no"
+                android:layout_marginEnd="10dp"/>
+            <Button
+                android:id="@+id/button_filter"
+                android:layout_width="75dp"
+                android:layout_height="35dp"
+                android:text="Filter"
+                android:textSize="11sp"
+                android:layout_marginEnd="5dp"/>
+            <Button
+                android:id="@+id/button_clear_filter"
+                android:layout_width="75dp"
+                android:layout_height="35dp"
+                android:text="Clear"
+                android:textSize="11sp"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textview_message"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

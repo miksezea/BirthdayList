@@ -32,12 +32,6 @@
             android:text="Id"
             android:padding="12dp" />
         <TextView
-            android:id="@+id/textView_friend_detailed_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:padding="12dp" />
-        <TextView
             android:id="@+id/textView_friend_detailed_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,14 +75,6 @@
         android:layout_gravity="center"
         android:visibility="gone">
 
-        <EditText
-            android:id="@+id/editText_friend_detailed_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:importantForAutofill="no"
-            android:padding="12dp" />
         <EditText
             android:id="@+id/editText_friend_detailed_name"
             android:layout_width="match_parent"

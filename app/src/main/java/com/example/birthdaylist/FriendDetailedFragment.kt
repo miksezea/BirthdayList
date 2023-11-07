@@ -20,12 +20,14 @@ class FriendDetailedFragment : Fragment() {
     private var _binding: FragmentFriendDetailedBinding? = null
     private val binding get() = _binding!!
     private val personViewModel: PersonsViewModel by activityViewModels()
-
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
+        auth = FirebaseAuth.getInstance()
+
         _binding = FragmentFriendDetailedBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,7 +47,6 @@ class FriendDetailedFragment : Fragment() {
             return
         } else {
             binding.textViewFriendDetailedId.text = person.id.toString()
-            binding.textViewFriendDetailedEmail.text = person.userId
             binding.textViewFriendDetailedName.text = person.name
             binding.textViewFriendDetailedBirthdate.text = person.getBirthdayString()
             binding.textViewFriendDetailedAge.text = person.age.toString()
@@ -53,7 +54,6 @@ class FriendDetailedFragment : Fragment() {
 
             binding.buttonUpdateFriend.setOnClickListener {
                 binding.linearLayoutFriendDetailedView.visibility = View.GONE
-                binding.editTextFriendDetailedEmail.setText(person.userId)
                 binding.editTextFriendDetailedName.setText(person.name)
                 binding.edittextAddDay.setText(person.birthDayOfMonth.toString())
                 binding.edittextAddMonth.setText(person.birthMonth.toString())
@@ -68,7 +68,6 @@ class FriendDetailedFragment : Fragment() {
 
                 binding.buttonConfirmUpdateFriend.setOnClickListener {
                     val newPerson = person.copy(
-                        userId = binding.editTextFriendDetailedEmail.text.toString(),
                         name = binding.editTextFriendDetailedName.text.toString(),
                         birthDayOfMonth = binding.edittextAddDay.text.toString().toInt(),
                         birthMonth = binding.edittextAddMonth.text.toString().toInt(),
@@ -77,7 +76,6 @@ class FriendDetailedFragment : Fragment() {
                     )
                     personViewModel.update(newPerson)
 
-                    binding.textViewFriendDetailedEmail.text = newPerson.userId
                     binding.textViewFriendDetailedName.text = newPerson.name
                     binding.textViewFriendDetailedBirthdate.text = newPerson.getBirthdayString()
                     binding.textViewFriendDetailedAge.text = newPerson.age.toString()
@@ -103,15 +101,13 @@ class FriendDetailedFragment : Fragment() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Log.d("APPLE", item.toString())
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.action_logout -> {
                 auth.signOut()
-                findNavController().navigate(R.id.action_FriendDetailedFragment_to_LoginFragment)
+                findNavController().navigate(R.id.action_FriendsFragment_to_LoginFragment)
+                true
             }
-            R.id.action_account -> {
-                findNavController().navigate(R.id.action_FriendDetailedFragment_to_MyAccountFragment)
-            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return true
     }
 }

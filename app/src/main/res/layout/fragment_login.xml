@@ -28,10 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="emailAddress"
+            android:importantForAutofill="yes"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
-            android:layout_marginBottom="16dp"
-            android:padding="48dp" />
+            android:layout_marginBottom="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -42,9 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="password"
+            android:importantForAutofill="yes"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
-            android:padding="48dp"
             android:layout_marginBottom="32dp" />
     </com.google.android.material.textfield.TextInputLayout>
 

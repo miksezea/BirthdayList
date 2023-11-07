@@ -19,24 +19,28 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
-// TODO:  Sort and filter
+// TODO: Remove back arrow from toolbar
+// TODO: Make sort and filter work
 class FriendsFragment : Fragment() {
     private var _binding: FragmentFriendsBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var auth: FirebaseAuth
     private val personViewModel: PersonsViewModel by activityViewModels()
-
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
+        auth = FirebaseAuth.getInstance()
+
         _binding = FragmentFriendsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        personViewModel.reload()
 
         personViewModel.personsLiveData.observe(viewLifecycleOwner) { persons ->
             binding.progressbar.visibility = View.GONE
@@ -44,8 +48,7 @@ class FriendsFragment : Fragment() {
             if (persons != null) {
                 val adapter = PersonsAdapter(persons) { position ->
                     val action =
-                        FriendsFragmentDirections.
-                        actionFriendsFragmentToFriendDetailedFragment(position)
+                        FriendsFragmentDirections.actionFriendsFragmentToFriendDetailedFragment(position)
                     findNavController().navigate(action)
                 }
                 var columns = 2
@@ -65,23 +68,17 @@ class FriendsFragment : Fragment() {
             binding.textviewMessage.text = errorMessage
         }
 
-        personViewModel.reload()
-
         binding.swiperefresh.setOnRefreshListener {
             personViewModel.reload()
-            binding.swiperefresh.isRefreshing = false // TODO too early
+            binding.swiperefresh.isRefreshing = false
         }
 
-        binding.fabAddFriend.setOnClickListener { view ->
+        binding.fabAddFriend.setOnClickListener {
             Snackbar.make(view, "Add friend", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
             val action = FriendsFragmentDirections.actionFriendsFragmentToAddFriendFragment()
             findNavController().navigate(action)
         }
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -89,15 +86,18 @@ class FriendsFragment : Fragment() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Log.d("APPLE", item.toString())
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.action_logout -> {
                 auth.signOut()
                 findNavController().navigate(R.id.action_FriendsFragment_to_LoginFragment)
+                true
             }
-            R.id.action_account -> {
-                findNavController().navigate(R.id.action_FriendsFragment_to_MyAccountFragment)
-            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

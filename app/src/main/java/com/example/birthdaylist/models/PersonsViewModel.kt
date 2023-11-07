@@ -1,22 +1,32 @@
 package com.example.birthdaylist.models
 
 import androidx.lifecycle.LiveData
-// import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.birthdaylist.repository.PersonRepository
+import com.google.firebase.auth.FirebaseAuth
 
 class PersonsViewModel : ViewModel() {
     private val repository = PersonRepository()
-    val personsLiveData: LiveData<List<Person>> = repository.personLiveData
+    val personsLiveData: LiveData<List<Person>> = repository.personsLiveData
     val errorMessageLiveData: LiveData<String> = repository.errorMessageLiveData
-    // val updateMessageLiveData: LiveData<String> = repository.updateMessageLiveData
+    //val updateMessageLiveData: LiveData<String> = repository.updateMessageLiveData
 
     init {
-        reload()
+        val userUid = FirebaseAuth.getInstance().currentUser?.uid
+        if (userUid != null) {
+            repository.getPersonsByUserId(userUid)
+        } else {
+            repository.getPersons()
+        }
     }
 
     fun reload() {
-        repository.getPersons()
+        val userUid = FirebaseAuth.getInstance().currentUser?.uid
+        if (userUid != null) {
+            repository.getPersonsByUserId(userUid)
+        } else {
+            repository.getPersons()
+        }
     }
 
     operator fun get(index: Int): Person? {
@@ -35,5 +45,27 @@ class PersonsViewModel : ViewModel() {
         repository.update(person)
     }
 
-    // TODO: Add sort and filter functions
+    fun sortByName() {
+        repository.sortByName()
+    }
+
+    fun sortByNameDescending() {
+        repository.sortByNameDescending()
+    }
+
+    fun sortByAge() {
+        repository.sortByAge()
+    }
+
+    fun sortByAgeDescending() {
+        repository.sortByAgeDescending()
+    }
+
+    fun sortByBirthday() {
+        repository.sortByBirthday()
+    }
+
+    fun sortByBirthdayDescending() {
+        repository.sortByBirthdayDescending()
+    }
 }

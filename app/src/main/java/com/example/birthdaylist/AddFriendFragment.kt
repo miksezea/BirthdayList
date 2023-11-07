@@ -16,18 +16,20 @@ import androidx.navigation.fragment.findNavController
 import com.example.birthdaylist.models.Person
 import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Add friend functionality
 class AddFriendFragment : Fragment() {
     private var _binding: FragmentAddFriendBinding? = null
     private val binding get() = _binding!!
     private val personViewModel: PersonsViewModel by activityViewModels()
+    private lateinit var auth: FirebaseAuth
 
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        setHasOptionsMenu(true)
         _binding = FragmentAddFriendBinding.inflate(inflater, container, false)
+        auth = FirebaseAuth.getInstance()
+
         return binding.root
     }
 
@@ -35,19 +37,24 @@ class AddFriendFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonAddFriend.setOnClickListener {
-            val email = binding.edittextAddEmail.text.toString()
             val name = binding.edittextAddName.text.toString()
             val day = binding.edittextAddDay.text.toString()
             val month = binding.edittextAddMonth.text.toString()
             val year = binding.edittextAddYear.text.toString()
             val remarks = binding.edittextAddRemarks.text.toString()
+            val user = auth.currentUser?.uid.toString().trim()
 
             val dayInt = day.toInt()
             val monthInt = month.toInt()
             val yearInt = year.toInt()
-            if (name.isEmpty() || email.isEmpty()|| day.isEmpty() || month.isEmpty() || year.isEmpty()) {
+            if (name.isEmpty() || day.isEmpty() || month.isEmpty() || year.isEmpty()) {
                 binding.textViewAddFriendError.visibility = View.VISIBLE
                 binding.textViewAddFriendError.text = "Error: Please fill in required fields"
+                return@setOnClickListener
+            }
+            if (user.isEmpty()) {
+                binding.textViewAddFriendError.visibility = View.VISIBLE
+                binding.textViewAddFriendError.text = "Error: Authentication failed"
                 return@setOnClickListener
             }
             if (dayInt < 1 || dayInt > 31 || monthInt < 1 || monthInt > 12 || yearInt < 1900 || yearInt > 2023) {
@@ -56,15 +63,11 @@ class AddFriendFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val person = Person(userId = email, name = name, birthDayOfMonth = dayInt, birthMonth = monthInt, birthYear = yearInt, remarks = remarks)
+            val person = Person(userId = user, name = name, birthDayOfMonth = dayInt, birthMonth = monthInt, birthYear = yearInt, remarks = remarks)
             personViewModel.add(person)
 
             findNavController().navigate(R.id.action_AddFriendFragment_to_FriendsFragment)
         }
-    }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -72,15 +75,18 @@ class AddFriendFragment : Fragment() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Log.d("APPLE", item.toString())
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.action_logout -> {
                 auth.signOut()
-                findNavController().navigate(R.id.action_AddFriendFragment_to_LoginFragment)
+                findNavController().navigate(R.id.action_FriendsFragment_to_LoginFragment)
+                true
             }
-            R.id.action_account -> {
-                findNavController().navigate(R.id.action_AddFriendFragment_to_MyAccountFragment)
-            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

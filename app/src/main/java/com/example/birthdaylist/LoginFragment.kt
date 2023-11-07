@@ -10,18 +10,18 @@ import androidx.navigation.fragment.findNavController
 import com.example.birthdaylist.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Add login functionality
 class LoginFragment : Fragment() {
-
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        auth = FirebaseAuth.getInstance()
+
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         Log.d("APPLE", "signInWithEmail:success")
-                        val user = auth.currentUser
+                        auth.currentUser
                         findNavController().navigate(R.id.action_LoginFragment_to_FriendsFragment)
                     } else {
                         Log.w("APPLE", "signInWithEmail:failure", task.exception)
@@ -54,9 +54,9 @@ class LoginFragment : Fragment() {
                     }
                 }
         }
-
         binding.textviewRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
+            val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+            findNavController().navigate(action)
         }
     }
 

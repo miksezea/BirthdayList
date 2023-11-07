@@ -8,6 +8,9 @@ interface PersonListService {
     @GET("Persons")
     fun getAllPersons(): Call<List<Person>>
 
+    @GET("Persons")
+    fun getPersonsByUserId(@Query("user_Id") userId: String): Call<List<Person>>
+
     @GET("Persons/{id}")
     fun getPerson(@Path("id") id: Int): Call<Person>
 
