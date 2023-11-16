@@ -42,7 +42,7 @@ class AddFriendFragment : Fragment() {
             val month = binding.edittextAddMonth.text.toString()
             val year = binding.edittextAddYear.text.toString()
             val remarks = binding.edittextAddRemarks.text.toString()
-            val user = auth.currentUser?.uid.toString().trim()
+            val user = auth.currentUser?.email.toString().trim()
 
             val dayInt = day.toInt()
             val monthInt = month.toInt()

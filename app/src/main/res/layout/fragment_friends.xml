@@ -9,7 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp">
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -17,132 +19,157 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <!-- TODO: Add hello message -->
+        <TextView
+            android:id="@+id/textview_hello_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/hello_user"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sort_by"
+            android:textSize="20sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Sort by name:"
-                android:textSize="11sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_weight="1"
+                android:text="@string/name"/>
             <Button
                 android:id="@+id/button_sort_by_name_asc"
-                android:layout_width="110dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:text="Ascending"
+                android:layout_weight="1"
+                android:text="@string/ascending"
                 android:textSize="11sp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_marginEnd="10dp"/>
             <Button
                 android:id="@+id/button_sort_by_name_desc"
-                android:layout_width="110dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:text="Descending"
+                android:layout_weight="1"
+                android:text="@string/descending"
                 android:textSize="11sp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Sort by age:"
-                android:textSize="11sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_weight="1"
+                android:text="@string/age"/>
 
             <Button
                 android:id="@+id/button_sort_by_age_asc"
-                android:layout_width="110dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:text="Ascending"
+                android:layout_weight="1"
+                android:text="@string/ascending"
                 android:textSize="11sp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_marginEnd="10dp"/>
             <Button
                 android:id="@+id/button_sort_by_age_desc"
-                android:layout_width="110dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:text="Descending"
+                android:layout_weight="1"
+                android:text="@string/descending"
                 android:textSize="11sp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_marginBottom="5dp">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Sort by birthday:"
-                android:textSize="11sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
+                android:layout_weight="1"
+                android:text="@string/birthday"/>
 
             <Button
                 android:id="@+id/button_sort_by_birthday_asc"
-                android:layout_width="110dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:text="Ascending"
+                android:layout_weight="1"
+                android:text="@string/ascending"
                 android:textSize="11sp"
-                android:layout_marginEnd="5dp" />
+                android:layout_marginEnd="10dp"/>
             <Button
                 android:id="@+id/button_sort_by_birthday_desc"
-                android:layout_width="110dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:text="Descending"
+                android:layout_weight="1"
+                android:text="@string/descending"
                 android:textSize="11sp"/>
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_by"
+            android:textSize="20sp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Filter by:"
-                android:textSize="11sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"/>
             <EditText
                 android:id="@+id/edittext_filter_name"
-                android:layout_width="70dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:inputType="textPersonName"
-                android:layout_marginStart="5dp"
-                android:hint="name"
+                android:hint="@string/name_no_capital"
                 android:importantForAutofill="no"/>
             <EditText
-                android:id="@+id/edittext_filter_age"
-                android:layout_width="40dp"
+                android:id="@+id/edittext_filter_age_above"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:inputType="number"
-                android:layout_marginStart="5dp"
-                android:hint="age"
-                android:importantForAutofill="no"
-                android:layout_marginEnd="10dp"/>
+                android:hint="@string/age_above"
+                android:importantForAutofill="no" />
+            <EditText
+                android:id="@+id/edittext_filter_age_below"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:hint="@string/age_below"
+                android:importantForAutofill="no"/>
             <Button
                 android:id="@+id/button_filter"
-                android:layout_width="75dp"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:text="Filter"
-                android:textSize="11sp"
-                android:layout_marginEnd="5dp"/>
-            <Button
-                android:id="@+id/button_clear_filter"
-                android:layout_width="75dp"
-                android:layout_height="35dp"
-                android:text="Clear"
-                android:textSize="11sp"/>
+                android:layout_weight="1"
+                android:text="@string/filter"
+                android:textSize="11sp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button_reset_list"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:textSize="11sp"
+            android:text="@string/reset_list" />
+
         <TextView
             android:id="@+id/textview_message"
             android:layout_width="wrap_content"
@@ -167,6 +194,5 @@
         android:layout_margin="16dp"
         android:layout_gravity="bottom|end"
         app:srcCompat="@android:drawable/ic_input_add"
-        android:contentDescription="Add a new friend to your friends list" />
-
+        android:contentDescription="@string/add_a_new_friend" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

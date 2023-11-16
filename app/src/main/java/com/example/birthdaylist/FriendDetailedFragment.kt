@@ -9,13 +9,13 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.birthdaylist.databinding.FragmentFriendDetailedBinding
 import com.example.birthdaylist.models.PersonsViewModel
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Implement picture
 class FriendDetailedFragment : Fragment() {
     private var _binding: FragmentFriendDetailedBinding? = null
     private val binding get() = _binding!!
@@ -43,10 +43,9 @@ class FriendDetailedFragment : Fragment() {
             binding.linearLayoutFriendDetailedView.visibility = View.GONE
             binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE
             binding.textViewFriendDetailedError.visibility = View.VISIBLE
-            binding.textViewFriendDetailedError.text = "Error: Person with id: " + position.toString() + "not found"
+            binding.textViewFriendDetailedError.text = "Error: Person with id: ${position} not found"
             return
         } else {
-            binding.textViewFriendDetailedId.text = person.id.toString()
             binding.textViewFriendDetailedName.text = person.name
             binding.textViewFriendDetailedBirthdate.text = person.getBirthdayString()
             binding.textViewFriendDetailedAge.text = person.age.toString()
@@ -67,27 +66,56 @@ class FriendDetailedFragment : Fragment() {
                 }
 
                 binding.buttonConfirmUpdateFriend.setOnClickListener {
-                    val newPerson = person.copy(
+                    val updates = person.copy(
                         name = binding.editTextFriendDetailedName.text.toString(),
                         birthDayOfMonth = binding.edittextAddDay.text.toString().toInt(),
                         birthMonth = binding.edittextAddMonth.text.toString().toInt(),
                         birthYear = binding.edittextAddYear.text.toString().toInt(),
                         remarks = binding.editTextFriendDetailedRemarks.text.toString()
                     )
-                    personViewModel.update(newPerson)
-
-                    binding.textViewFriendDetailedName.text = newPerson.name
-                    binding.textViewFriendDetailedBirthdate.text = newPerson.getBirthdayString()
-                    binding.textViewFriendDetailedAge.text = newPerson.age.toString()
-                    binding.textViewFriendDetailedRemarks.text = newPerson.remarks
-
+                    try {
+                        personViewModel.update(updates)
+                        Log.d("APPLE", "Updated person with id: " + person.id.toString())
+                        binding.textViewFriendDetailedName.text = updates.name
+                        binding.textViewFriendDetailedBirthdate.text = updates.getBirthdayString()
+                        binding.textViewFriendDetailedAge.text = personViewModel[person.id]!!.age.toString()
+                        binding.textViewFriendDetailedRemarks.text = updates.remarks
+                        Toast.makeText(
+                            context,
+                            "Friend details updated successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } catch (e: Exception) {
+                        Log.d("APPLE", "Error while updating: $e")
+                        Toast.makeText(
+                            context,
+                            "Unable to update friend details: $e",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                     binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE
                     binding.linearLayoutFriendDetailedView.visibility = View.VISIBLE
                 }
-            }
-            binding.buttonDeleteFriend.setOnClickListener {
-                personViewModel.delete(person.id)
-                findNavController().popBackStack()
+
+                binding.buttonDeleteFriend.setOnClickListener {
+                    try {
+                        personViewModel.delete(person.id)
+                        Log.d("APPLE", "Deleted person with id: " + person.id.toString())
+                        Toast.makeText(
+                            context,
+                            "Friend was successfully removed",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        findNavController().popBackStack()
+                    } catch (e: Exception) {
+                        Log.d("APPLE", e.toString())
+                        Toast.makeText(
+                            context,
+                            "Unable to delete friend: $e",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
             }
         }
     }

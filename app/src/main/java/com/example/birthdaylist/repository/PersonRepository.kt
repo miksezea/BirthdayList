@@ -146,4 +146,16 @@ class PersonRepository {
         personsLiveData.value = personsLiveData.value?.sortedWith(
             compareByDescending<Person>{ it.birthMonth }.thenByDescending{ it.birthDayOfMonth })
     }
+
+    fun filterByName(name: String) {
+        personsLiveData.value = personsLiveData.value?.filter { it.name.contains(name.lowercase()) }
+    }
+
+    fun filterByAgeBelow(age: Int) {
+        personsLiveData.value = personsLiveData.value?.filter { it.age < age }
+    }
+
+    fun filterByAgeAbove(age: Int) {
+        personsLiveData.value = personsLiveData.value?.filter { it.age > age }
+    }
 }

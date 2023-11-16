@@ -20,7 +20,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 // TODO: Remove back arrow from toolbar
-// TODO: Make sort and filter work
 class FriendsFragment : Fragment() {
     private var _binding: FragmentFriendsBinding? = null
     private val binding get() = _binding!!
@@ -41,6 +40,8 @@ class FriendsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         personViewModel.reload()
+
+        binding.textviewHelloUser.text = "Hello ${auth.currentUser?.email}"
 
         personViewModel.personsLiveData.observe(viewLifecycleOwner) { persons ->
             binding.progressbar.visibility = View.GONE
@@ -78,6 +79,50 @@ class FriendsFragment : Fragment() {
                 .setAction("Action", null).show()
             val action = FriendsFragmentDirections.actionFriendsFragmentToAddFriendFragment()
             findNavController().navigate(action)
+        }
+
+        binding.buttonSortByNameAsc.setOnClickListener {
+            personViewModel.sortByName()
+        }
+        binding.buttonSortByNameDesc.setOnClickListener {
+            personViewModel.sortByNameDescending()
+        }
+
+        binding.buttonSortByAgeAsc.setOnClickListener {
+            personViewModel.sortByAge()
+        }
+        binding.buttonSortByAgeDesc.setOnClickListener {
+            personViewModel.sortByAgeDescending()
+        }
+
+        binding.buttonSortByBirthdayAsc.setOnClickListener {
+            personViewModel.sortByBirthday()
+        }
+        binding.buttonSortByBirthdayDesc.setOnClickListener {
+            personViewModel.sortByBirthdayDescending()
+        }
+
+        binding.buttonFilter.setOnClickListener {
+            val name = binding.edittextFilterName.text.toString()
+            val ageBelow = binding.edittextFilterAgeBelow.text.toString()
+            val ageAbove = binding.edittextFilterAgeAbove.text.toString()
+
+            if (name.isNotBlank()) {
+                personViewModel.filterByName(name)
+            }
+            if (ageAbove.isNotBlank()) {
+                personViewModel.filterByAgeAbove(ageAbove.toInt())
+            }
+            if (ageBelow.isNotBlank()) {
+                personViewModel.filterByAgeBelow(ageBelow.toInt())
+            }
+        }
+
+        binding.buttonResetList.setOnClickListener {
+            binding.edittextFilterName.text.clear()
+            binding.edittextFilterAgeBelow.text.clear()
+            binding.edittextFilterAgeAbove.text.clear()
+            personViewModel.reload()
         }
     }
 

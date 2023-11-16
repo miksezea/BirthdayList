@@ -11,14 +11,14 @@
         android:id="@+id/textView_add_friend_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Error"
+        android:text="@string/error"
         android:layout_marginBottom="16dp"
         android:visibility="gone"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name:"/>
+        android:text="@string/name_colon"/>
 
     <EditText
         android:id="@+id/edittext_add_name"
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Birth date:"/>
+        android:text="@string/birth_date_colon"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,31 +46,31 @@
             android:id="@+id/edittext_add_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Day"
+            android:hint="@string/day"
             android:inputType="date"
             android:padding="12dp"
             android:importantForAutofill="no" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="/"/>
+            android:text="@string/slash"/>
         <EditText
             android:id="@+id/edittext_add_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Month"
+            android:hint="@string/month"
             android:inputType="date"
             android:padding="12dp"
             android:importantForAutofill="no" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" - "/>
+            android:text="@string/dash"/>
         <EditText
             android:id="@+id/edittext_add_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Year"
+            android:hint="@string/year"
             android:inputType="date"
             android:padding="12dp"
             android:importantForAutofill="no" />
@@ -79,7 +79,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remarks:"/>
+        android:text="@string/remarks_colon"/>
 
     <EditText
         android:id="@+id/edittext_add_remarks"
@@ -95,5 +95,5 @@
         android:id="@+id/button_add_friend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add as friend"/>
+        android:text="@string/add_as_friend"/>
 </LinearLayout>

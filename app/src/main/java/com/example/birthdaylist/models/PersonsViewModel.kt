@@ -12,18 +12,18 @@ class PersonsViewModel : ViewModel() {
     //val updateMessageLiveData: LiveData<String> = repository.updateMessageLiveData
 
     init {
-        val userUid = FirebaseAuth.getInstance().currentUser?.uid
-        if (userUid != null) {
-            repository.getPersonsByUserId(userUid)
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email
+        if (userEmail != null) {
+            repository.getPersonsByUserId(userEmail)
         } else {
             repository.getPersons()
         }
     }
 
     fun reload() {
-        val userUid = FirebaseAuth.getInstance().currentUser?.uid
-        if (userUid != null) {
-            repository.getPersonsByUserId(userUid)
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email
+        if (userEmail != null) {
+            repository.getPersonsByUserId(userEmail)
         } else {
             repository.getPersons()
         }
@@ -67,5 +67,17 @@ class PersonsViewModel : ViewModel() {
 
     fun sortByBirthdayDescending() {
         repository.sortByBirthdayDescending()
+    }
+
+    fun filterByName(name: String) {
+        repository.filterByName(name)
+    }
+
+    fun filterByAgeBelow(age: Int) {
+        repository.filterByAgeBelow(age)
+    }
+
+    fun filterByAgeAbove(age: Int) {
+        repository.filterByAgeAbove(age)
     }
 }
