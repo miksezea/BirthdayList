@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.birthdaylist.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -49,8 +50,14 @@ class LoginFragment : Fragment() {
                         findNavController().navigate(R.id.action_LoginFragment_to_FriendsFragment)
                     } else {
                         Log.w("APPLE", "signInWithEmail:failure", task.exception)
-                        binding.textviewMessage.text = "Authentication failed." +
-                                task.exception?.message
+                        //binding.textviewMessage.text = "Authentication failed." +
+                                //task.exception?.message
+                        Toast.makeText(
+                            context,
+                            "Username or password is incorrect",
+                            Toast.LENGTH_LONG
+                        ).show()
+
                     }
                 }
         }

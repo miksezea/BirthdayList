@@ -148,7 +148,7 @@ class PersonRepository {
     }
 
     fun filterByName(name: String) {
-        personsLiveData.value = personsLiveData.value?.filter { it.name.contains(name.lowercase()) }
+        personsLiveData.value = personsLiveData.value?.filter { it.name.contains(name) }
     }
 
     fun filterByAgeBelow(age: Int) {

@@ -137,7 +137,8 @@
                 android:layout_weight="1"
                 android:inputType="textPersonName"
                 android:hint="@string/name_no_capital"
-                android:importantForAutofill="no"/>
+                android:importantForAutofill="no"
+                android:imeOptions="actionDone"/>
             <EditText
                 android:id="@+id/edittext_filter_age_above"
                 android:layout_width="0dp"
@@ -145,7 +146,8 @@
                 android:layout_weight="1"
                 android:inputType="number"
                 android:hint="@string/age_above"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:imeOptions="actionDone"/>
             <EditText
                 android:id="@+id/edittext_filter_age_below"
                 android:layout_width="0dp"
@@ -153,7 +155,8 @@
                 android:layout_weight="1"
                 android:inputType="number"
                 android:hint="@string/age_below"
-                android:importantForAutofill="no"/>
+                android:importantForAutofill="no"
+                android:imeOptions="actionDone"/>
             <Button
                 android:id="@+id/button_filter"
                 android:layout_width="0dp"

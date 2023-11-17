@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterFragment"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textview_register_error"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/error_message"
-        android:visibility="invisible"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/username_colon"
-        android:textSize="20sp" />
-    <EditText
-        android:id="@+id/edittext_register_username"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="username"
-        android:hint="@string/hint_username"
-        android:inputType="text"
-        android:layout_marginBottom="16dp"
-        android:padding="12dp"/>
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/textview_register_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_message"
+            android:visibility="invisible"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email_colon"
-        android:textSize="20sp" />
-    <EditText
-        android:id="@+id/edittext_register_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="password"
-        android:hint="@string/hint_password"
-        android:inputType="textPassword"
-        android:padding="12dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edittext_register_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="username"
+                android:hint="@string/hint_username"
+                android:inputType="text"
+                android:layout_marginBottom="16dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/edittext_register_password_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints="password"
-        android:hint="@string/hint_confirm_password"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="@string/register" />
-</LinearLayout>
+            <EditText
+                android:id="@+id/edittext_register_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edittext_register_password_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:hint="@string/hint_confirm_password"
+                android:inputType="textPassword"
+                android:layout_marginBottom="8dp"
+                android:imeOptions="actionDone"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register" />
+    </LinearLayout>
+</ScrollView>

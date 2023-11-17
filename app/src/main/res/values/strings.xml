@@ -59,4 +59,5 @@
     <string name="age_below">age below</string>
     <string name="age_above">age above</string>
     <string name="reset_list">Reset list</string>
+    <string name="update_friend">Update Friend:</string>
 </resources>

@@ -62,6 +62,8 @@ class FriendsFragment : Fragment() {
                 binding.recyclerView.layoutManager = GridLayoutManager(this.context, columns)
 
                 binding.recyclerView.adapter = adapter
+            } else {
+                binding.textviewMessage.text = "No friends found"
             }
         }
 

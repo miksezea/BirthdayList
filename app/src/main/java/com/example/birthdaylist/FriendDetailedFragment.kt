@@ -52,7 +52,6 @@ class FriendDetailedFragment : Fragment() {
             binding.textViewFriendDetailedRemarks.text = person.remarks
 
             binding.buttonUpdateFriend.setOnClickListener {
-                binding.linearLayoutFriendDetailedView.visibility = View.GONE
                 binding.editTextFriendDetailedName.setText(person.name)
                 binding.edittextAddDay.setText(person.birthDayOfMonth.toString())
                 binding.edittextAddMonth.setText(person.birthMonth.toString())
@@ -62,7 +61,6 @@ class FriendDetailedFragment : Fragment() {
 
                 binding.buttonCancelUpdateFriend.setOnClickListener {
                     binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE
-                    binding.linearLayoutFriendDetailedView.visibility = View.VISIBLE
                 }
 
                 binding.buttonConfirmUpdateFriend.setOnClickListener {
@@ -94,7 +92,6 @@ class FriendDetailedFragment : Fragment() {
                         ).show()
                     }
                     binding.linearLayoutFriendDetailedUpdate.visibility = View.GONE
-                    binding.linearLayoutFriendDetailedView.visibility = View.VISIBLE
                 }
 
                 binding.buttonDeleteFriend.setOnClickListener {

@@ -23,12 +23,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="visible"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/name"/>
+                android:textSize="16sp"
+                android:text="@string/name"
+                android:labelFor="@+id/textView_friend_detailed_name"/>
             <TextView
                 android:id="@+id/textView_friend_detailed_name"
                 android:layout_width="wrap_content"
@@ -39,7 +42,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/birthdate"/>
+                android:textSize="16sp"
+                android:text="@string/birthdate"
+                android:labelFor="@+id/textView_friend_detailed_birthdate"/>
             <TextView
                 android:id="@+id/textView_friend_detailed_birthdate"
                 android:layout_width="wrap_content"
@@ -50,7 +55,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/age"/>
+                android:textSize="16sp"
+                android:text="@string/age"
+                android:labelFor="@+id/textView_friend_detailed_age"/>
             <TextView
                 android:id="@+id/textView_friend_detailed_age"
                 android:layout_width="wrap_content"
@@ -61,7 +68,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/remarks"/>
+                android:textSize="16sp"
+                android:text="@string/remarks"
+                android:labelFor="@+id/textView_friend_detailed_remarks"/>
             <TextView
                 android:id="@+id/textView_friend_detailed_remarks"
                 android:layout_width="wrap_content"
@@ -93,7 +102,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:gravity="center"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/update_friend"/>
 
             <EditText
                 android:id="@+id/editText_friend_detailed_name"
@@ -154,7 +170,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center">
                 <Button
                     android:id="@+id/button_confirm_update_friend"
                     android:layout_width="wrap_content"
